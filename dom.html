@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Tasks</title>
+</head>
+<body>
+    <style>
+     body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .night {
+      background-color: #222;
+      color: #fff;
+    }
+
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    ul {
+      list-style-type: circle;
+    }
+</style>
+
+  <!-- 1. Paragraph and Change Button -->
+  
+  <p id="Para">hello, world</p>
+  <button onclick="changeText()">Change Text</button>
+
+  <!-- 2. Hobby List with Add Button -->
+  <h2>2. Hobby List</h2>
+  <ul id="hobbyList"></ul>
+  <button onclick="addHobby()">Add Hobby</button>
+
+  <!-- 3. Color Switcher -->
+  <h2>3. Background Color Switcher</h2>
+  <button onclick="setColor('red')">red</button>
+  <button onclick="setColor('blue')">blue</button>
+  <button onclick="setColor('green')">green</button>
+
+  <!-- 4. Theme Toggle -->
+  <h2>4. Theme Toggle</h2>
+  <button onclick="toggleTheme()">Toggle today</button>
+
+  <!-- 5. Clear All Button -->
+  <h2>5. Clear Hobby List</h2>
+  <button onclick="clearList()">Clear All</button>
+  <script>
+    // 1. Change Paragraph Text
+    function changeText() {
+      document.getElementById("Para").innerText = "Paragraph text has been changed!";
+    }
+
+    // 2. Add Hobby to List
+    const hobbies = ["playing", "videos", "Cooking", "singing", "Coding"];
+    let index = 0;
+    function addHobby() {
+      if (index < hobbies.length) {
+        const li = document.createElement("li");
+        li.textContent = hobbies[index++];
+        document.getElementById("hobbyList").appendChild(li);
+      } else {
+        alert("No more hobbies to add!");
+      }
+    }
+
+    // 3. Set Background Color
+    function setColor(color) {
+      document.body.style.backgroundColor = color;
+    }
+
+    // 4. Toggle Theme
+    function toggleTheme() {
+      document.body.classList.toggle("night");
+    }
+
+    // 5. Clear Hobby List
+    function clearList() {
+      document.getElementById("hobbyList").innerHTML = "";
+      index = 0; // Reset hobby index to allow re-adding
+    }
+
+  </script>
+
+
+</body>
+</html>
